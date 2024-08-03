@@ -11,6 +11,8 @@
 <body>
 <div class="navbar">
         <a href="cadastrarForm.html">Cadastrar paciente</a>
+        <a href="excluirForm.php">Excluir responsável ou paciente</a>
+        <a href="testeindex.php">Menu</a>
         <div class="search-container">
             <form action="pesquisarPaciente.php" method="get">
                 <input type="text" placeholder="Pesquisar Paciente..." name="pesquisa">
@@ -23,7 +25,7 @@
     <div style="padding: 20px">
 
 
-    <a href="excluirForm.php">Excluir responsável ou paciente</a>
+
     <?php
     include("conecta.php");
 
