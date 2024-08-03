@@ -1,0 +1,93 @@
+body {
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background-color: #ffdee3;
+}
+
+.navbar a {
+    color: #000000;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: bold;
+}
+
+.navbar .search-container {
+    display: flex;
+    align-items: center;
+}
+
+.navbar form {
+    display: flex;
+}
+
+.navbar input[type="text"] {
+    padding: 5px;
+    border-radius: 15px 0 0 15px;
+    border: 1px solid #ff9bb1;
+    outline: none;
+}
+
+.navbar button {
+    padding: 5px 10px;
+    border: 1px solid #ff9bb1;
+    border-radius: 0 15px 15px 0;
+    background-color: #ff9bb1;
+    color: white;
+    cursor: pointer;
+    border-left: none;
+}
+
+.navbar button:hover {
+    background-color: #ff7a96;
+}
+
+.container {
+    padding: 20px;
+}
+
+.container a {
+    display: block;
+    margin-bottom: 15px;
+    color: #ff9bb1;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    color: #000000;
+}
+
+table th {
+    background-color: #ff9bb1;
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+table td {
+    background-color: #ffe6ea;
+}
+
+table tr:nth-child(even) td {
+    background-color: #ffd7dd;
+}
+
+table tr:hover {
+    background-color: #ffdee3;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Paciente</title>
+    <style>
+        form {
+            width: 50%;
+            margin: auto;
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], input[type="date"], input[type="number"], select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Cadastrar Paciente</h2>
+    <form action="cadastrar.php" method="POST">
+        <label for="nome">Nome do Paciente:</label>
+        <input type="text" id="nome" name="nome" required><br>
+
+        <label for="nascimento">Data de Nascimento:</label>
+        <input type="date" id="nascimento" name="nascimento" required><br>
+
+        <label for="especie">Espécie:</label>
+        <select id="especie" name="especie" required>
+            <option value="cachorro">Cachorro</option>
+            <option value="gato">Gato</option>
+        </select><br>
+
+        <label for="raca">Raça:</label>
+        <select id="raca" name="raca" required>
+            <!-- As opções de raça serão inseridas aqui dinamicamente -->
+        </select><br>
+
+        <label for="porte">Porte:</label>
+        <input type="text" id="porte" name="porte" required><br>
+
+        <label for="peso">Peso:</label>
+        <input type="number" id="peso" name="peso" step="0.01" required><br>
+
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo" required>
+            <option value="M">Macho</option>
+            <option value="F">Fêmea</option>
+        </select><br>
+
+        <label for="castrado">Castrado:</label>
+        <select id="castrado" name="castrado" required>
+            <option value="1">Sim</option>
+            <option value="0">Não</option>
+        </select><br>
+
+        <h3>Dados do Responsável</h3>
+        <label for="nome_responsavel">Nome:</label>
+        <input type="text" id="nome_responsavel" name="nome_responsavel" required><br>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" required><br>
+
+        <label for="endereco">Endereço:</label>
+        <input type="text" id="endereco" name="endereco" required><br>
+
+        <br> <input type="submit" value="Cadastrar">
+    </form>
+
+    <script>
+        document.getElementById('especie').addEventListener('change', function () {
+            var especie = this.value;
+            fetch('racas.php?especie=' + especie)
+                .then(response => response.json())
+                .then(data => {
+                    var racaSelect = document.getElementById('raca');
+                    racaSelect.innerHTML = '';
+                    data.forEach(function (raca) {
+                        var option = document.createElement('option');
+                        option.value = raca.id;
+                        option.textContent = raca.nome;
+                        racaSelect.appendChild(option);
+                    });
+                });
+        });
+    </script>
+</body>
+
+</html>
