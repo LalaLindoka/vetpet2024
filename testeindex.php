@@ -41,8 +41,8 @@
         <div class="side-buttons">
         <a href="cadastrarForm.html" class="button">Cadastrar Paciente</a>
         <a href="cadastros.php" class="button">Cadastros</a>
-        <a href="cadastrarForm.html" class="button">Cadastrar Paciente</a>
-        <a href="cadastrarForm.html" class="button">Cadastrar Paciente</a>
+        <a href="cadastrarForm.html" class="button">nao definido</a>
+        <a href="cadastrarForm.html" class="button">nao definido</a>
         </div>
     </div>
 </body>
