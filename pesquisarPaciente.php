@@ -4,7 +4,6 @@ include("conecta.php");
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
 
-    // Consulta SQL para buscar pacientes que correspondam ao nome pesquisado
     $sql = "SELECT * FROM pacientes WHERE nome LIKE '%$pesquisa%'";
     $resultado = mysqli_query($conexao, $sql);
 
@@ -37,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['pesquisa'])) {
             echo "</tr>";
         }
         echo "</table>";
-        echo '<br><br><a href="index.php"><button>Voltar</button></a>';
+        echo '<br><br><a href="testeindex.php"><button>Voltar</button></a>';
     } else {
         echo "Nenhum paciente encontrado.";
-        echo '<br><br><a href="index.php"><button>Voltar</button></a>';
+        echo '<br><br><a href="testeindex.php"><button>Voltar</button></a>';
     }
 
     mysqli_close($conexao);

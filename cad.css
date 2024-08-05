@@ -1,3 +1,44 @@
+/* Novo CSS para a estrutura flexível */
+.main-container {
+    display: flex; /* Usa o layout flexível para o contêiner principal */
+}
+
+.content {
+    flex-grow: 1; /* Permite que o conteúdo principal ocupe o espaço restante */
+    padding: 20px; /* Espaçamento interno do conteúdo principal */
+}
+
+table {
+    width: 100%; /* Garante que a tabela ocupe toda a largura disponível */
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    color: #000000;
+}
+
+table th {
+    background-color: #ff9bb1;
+    color: white;
+    border-radius: 15px 15px 0 0;
+}
+
+table td {
+    background-color: #ffe6ea;
+}
+
+table tr:nth-child(even) td {
+    background-color: #ffd7dd;
+}
+
+table tr:hover {
+    background-color: #ffdee3;
+}
+
+
 body {
     background-color: #ffffff;
     font-family: Arial, sans-serif;

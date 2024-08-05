@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conexao, $sql)) {
         echo ucfirst($tipo) . " excluído com sucesso!";
-        echo '<br><br><a href="index.php"><button>Voltar</button></a>';
+        echo '<br><br><a href="testeindex.php"><button>Voltar</button></a>';
     } else {
         echo "Erro ao excluir " . $tipo . ": " . mysqli_error($conexao);
         echo '<br><br><a href="excluirForm.html"><button>Tentar Novamente</button></a>';
