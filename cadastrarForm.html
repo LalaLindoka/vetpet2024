@@ -59,8 +59,8 @@
 
         <label for="sexo">Sexo:</label>
         <select id="sexo" name="sexo" required>
-            <option value="M">Macho</option>
-            <option value="F">Fêmea</option>
+            <option value="Macho">Macho</option>
+            <option value="Fêmea">Fêmea</option>
         </select><br>
 
         <label for="castrado">Castrado:</label>
@@ -92,7 +92,7 @@
                     racaSelect.innerHTML = '';
                     data.forEach(function (raca) {
                         var option = document.createElement('option');
-                        option.value = raca.id;
+                        option.value = raca.nome;
                         option.textContent = raca.nome;
                         racaSelect.appendChild(option);
                     });
