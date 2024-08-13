@@ -36,10 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['pesquisa'])) {
             echo "</tr>";
         }
         echo "</table>";
-        echo '<br><br><a href="testeindex.php"><button>Voltar</button></a>';
+        echo '<br><br><a href="index.php"><button>Voltar</button></a>';
     } else {
         echo "Nenhum paciente encontrado.";
-        echo '<br><br><a href="testeindex.php"><button>Voltar</button></a>';
+        echo '<br><br><a href="index.php"><button>Voltar</button></a>';
     }
 
     mysqli_close($conexao);

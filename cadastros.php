@@ -17,18 +17,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Informações dos Pacientes</title>
-        <link rel="stylesheet" href="cad.css">
         <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="cad.css">
         <style>
             :root {
-                --color-primary: #6C9BCF;
+                --color-primary: #ff9bb1;
                 --color-danger: #FF0060;
                 --color-success: #1B9C85;
-                --color-warning: #F7D060;
                 --color-white: #fff;
-                --color-info-dark: #7d8da1;
+                --color-info-dark: #7d8da1;    
                 --color-light: rgba(132, 139, 200, 0.18);
-                --color-dark-variant: #677483;
                 --card-border-radius: 2rem;
                 --border-radius-1: 0.4rem;
                 --border-radius-2: 1.2rem;
@@ -182,9 +180,6 @@
                             <input type="text" placeholder="Pesquisar Paciente..." name="pesquisa">
                             <button type="submit">Buscar</button>
                         </form>
-                    </div>
-                    <div class="welcome">Seja bem-vindo, xxx</div>
-                </div>
             </header>
             <div class="container">
                 <aside>

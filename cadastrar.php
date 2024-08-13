@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         VALUES ('$nome', '$nascimento', '$raca', '$especie', '$porte', '$peso', '$sexo', '$castrado', '$responsavel_id')";
         if (mysqli_query($conexao, $sqlPaciente)) {
             echo "Paciente cadastrado com sucesso!";
-            echo '<br><br><a href="testeindex.php"><button>Voltar</button></a>';
+            echo '<br><br><a href="index.php"><button>Voltar</button></a>';
         } else {
             echo "Erro ao cadastrar paciente: " . mysqli_error($conexao);
             echo '<br><br><a href="cadastrarForm.html"><button>Tentar Novamente</button></a>';
