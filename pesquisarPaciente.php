@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['pesquisa'])) {
         echo "<h2>Resultados da Pesquisa</h2>";
         echo "<table border='1'>
                 <tr>
-                    <th>ID</th>
                     <th>Nome do Paciente</th>
                     <th>Data de Nascimento</th>
                     <th>Raça</th>
@@ -20,11 +19,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['pesquisa'])) {
                     <th>Peso</th>
                     <th>Sexo</th>
                     <th>Castrado</th>
+                    <th>Abrir ficha</th>
                 </tr>";
 
         while ($row = mysqli_fetch_assoc($resultado)) {
             echo "<tr>";
-            echo "<td>" . $row['id'] . "</td>";
             echo "<td>" . $row['nome'] . "</td>";
             echo "<td>" . $row['nascimento'] . "</td>";
             echo "<td>" . $row['raca'] . "</td>";
@@ -36,10 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['pesquisa'])) {
             echo "</tr>";
         }
         echo "</table>";
-        echo '<br><br><a href="index.php"><button>Voltar</button></a>';
+        echo '<br><br><a href="cadastros.php"><button>Voltar</button></a>';
     } else {
         echo "Nenhum paciente encontrado.";
-        echo '<br><br><a href="index.php"><button>Voltar</button></a>';
+        echo '<br><br><a href="cadastros.php"><button>Voltar</button></a>';
     }
 
     mysqli_close($conexao);

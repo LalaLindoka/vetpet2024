@@ -176,8 +176,8 @@
                 <div class="navbar">
                     <img src="logo.png" alt="Logo">
                     <div class="search-container">
-                        <form action="pesquisarPaciente.php" method="get">
-                            <input type="text" placeholder="Pesquisar Paciente..." name="pesquisa">
+                        <form action="pesquisarCliente.php" method="get">
+                            <input type="text" placeholder="Pesquisar Cliente..." name="pesquisa">
                             <button type="submit">Buscar</button>
                         </form>
             </header>
@@ -193,11 +193,11 @@
                     </div>
 
                     <div class="sidebar">
-                        <a href="cadastros.php" class="active">
+                        <a href="cadastros.php">
                             <span class="material-icons-sharp"></span>
                             <h3>Pets</h3>
                         </a>
-                        <a href="clientes.php">
+                        <a href="clientes.php" class="active">
                             <span class="material-icons-sharp"></span>
                             <h3>Clientes</h3>
                         </a>
@@ -219,25 +219,16 @@
                     <?php
                     include ("conecta.php");
 
-                    $sql = "SELECT p.nome, p.nascimento, p.raca, p.especie, p.porte, p.peso, p.sexo, p.castrado, r.nome AS responsavel
-                    FROM pacientes p
-                    JOIN responsaveis r ON p.responsavel_id = r.id";
+                    $sql = "SELECT p.nome, p.telefone, p.endereco
+                    FROM clientes p";
                     $resultado = mysqli_query($conexao, $sql);
 
                     echo '<table>
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
-                    <th scope="col">Nascimento</th>
-                    <th scope="col">Raça</th>
-                    <th scope="col">Espécie</th>
-                    <th scope="col">Porte</th>
-                    <th scope="col">Peso (kg)</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Castrado</th>
-                    <th scope="col">Responsável</th>
-                    <th scope="col">Abrir ficha</th>
-                    <th scope="col">Editar ficha</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Endereço</th>
                 </tr>
             </thead>
             <tbody>';
@@ -245,14 +236,8 @@
                     while ($dados = mysqli_fetch_assoc($resultado)) {
                         echo "<tr>";
                         echo "<td>" . $dados['nome'] . "</td>";
-                        echo "<td>" . $dados['nascimento'] . "</td>";
-                        echo "<td>" . $dados['raca'] . "</td>";
-                        echo "<td>" . $dados['especie'] . "</td>";
-                        echo "<td>" . $dados['porte'] . "</td>";
-                        echo "<td>" . $dados['peso'] . "</td>";
-                        echo "<td>" . $dados['sexo'] . "</td>";
-                        echo "<td>" . ($dados['castrado'] ? 'Sim' : 'Não') . "</td>";
-                        echo "<td>" . $dados['responsavel'] . "</td>";
+                        echo "<td>" . $dados['telefone'] . "</td>";
+                        echo "<td>" . $dados['endereco'] . "</td>";
                         echo "</tr>";
                     }
 
