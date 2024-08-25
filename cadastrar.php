@@ -2,15 +2,15 @@
 include("conecta.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nomeResponsavel = $_POST['nomeResponsavel'];
+    $nome_responsavel = $_POST['nome_responsavel'];
     $telefone = $_POST['telefone'];
     $endereco = $_POST['endereco'];
 
-    $sqlResponsavel = "INSERT INTO responsaveis (nome, telefone, endereco) VALUES ('$nomeResponsavel', '$telefone', '$endereco')";
+    $sqlResponsavel = "INSERT INTO responsaveis (nome, telefone, endereco) VALUES ('$nome_responsavel', '$telefone', '$endereco')";
     if (mysqli_query($conexao, $sqlResponsavel)) {
         $responsavel_id = mysqli_insert_id($conexao);
 
-        $nomePaciente = $_POST['nomePaciente'];
+        $nome = $_POST['nome'];
         $nascimento = $_POST['nascimento'];
         $raca = $_POST['raca'];
         $especie = $_POST['especie'];
@@ -18,9 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $peso = $_POST['peso'];
         $sexo = $_POST['sexo'];
         $castrado = $_POST['castrado'];
-
+       
         $sqlPaciente = "INSERT INTO pacientes (nome, nascimento, raca, especie, porte, peso, sexo, castrado, responsavel_id) 
-                        VALUES ('$nomePaciente', '$nascimento', '$raca', '$especie', '$porte', '$peso', '$sexo', '$castrado', '$responsavel_id')";
+                        VALUES ('$nome', '$nascimento', '$raca', '$especie', '$porte', '$peso', '$sexo', '$castrado', '$responsavel_id')";
         if (mysqli_query($conexao, $sqlPaciente)) {
             echo "Paciente cadastrado com sucesso!";
             echo '<br><br><a href="index.php"><button>Voltar</button></a>';

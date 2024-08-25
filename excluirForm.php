@@ -56,7 +56,7 @@
                 }
                 echo '</optgroup>';
 
-                // Obter os IDs dos responsáveis
+   
                 $sqlResponsaveis = "SELECT id, nome FROM responsaveis";
                 $resultadoResponsaveis = mysqli_query($conexao, $sqlResponsaveis);
 

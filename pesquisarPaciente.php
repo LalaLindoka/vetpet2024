@@ -4,7 +4,6 @@ include("conecta.php");
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['pesquisa'])) {
     $pesquisa = $_GET['pesquisa'];
 
-    // Consulta SQL para buscar pacientes que correspondam ao nome pesquisado
     $sql = "SELECT * FROM pacientes WHERE nome LIKE '%$pesquisa%'";
     $resultado = mysqli_query($conexao, $sql);
 
