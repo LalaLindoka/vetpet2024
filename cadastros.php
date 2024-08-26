@@ -13,7 +13,7 @@
             --color-danger: #FF0060;
             --color-success: #1B9C85;
             --color-white: #fff;
-            --color-info-dark: #7d8da1;    
+            --color-info-dark: #7d8da1;
             --color-light: rgba(132, 139, 200, 0.18);
             --card-border-radius: 2rem;
             --border-radius-1: 0.4rem;
@@ -159,7 +159,7 @@
 
 <body>
     <aside>
-        
+
         <div class="sidebar">
             <div class="toggle">
                 <div class="logo">
@@ -208,10 +208,19 @@
         <div style="padding: 10px">
             <?php
             include("conecta.php");
+            $sql = "SELECT p.nome, 
+            DATE_FORMAT(p.nascimento, '%d/%m/%Y') AS nascimento, 
+            p.raca, 
+            p.especie, 
+            p.porte, 
+            p.peso, 
+            p.sexo, 
+            p.castrado, 
+            r.nome AS responsavel
+     FROM pacientes p
+     JOIN responsaveis r ON p.responsavel_id = r.id";
 
-            $sql = "SELECT p.nome, p.nascimento, p.raca, p.especie, p.porte, p.peso, p.sexo, p.castrado, r.nome AS responsavel
-                    FROM pacientes p
-                    JOIN responsaveis r ON p.responsavel_id = r.id";
+
             $resultado = mysqli_query($conexao, $sql);
 
             echo '<table>
@@ -231,21 +240,20 @@
                 </tr>
             </thead>
             <tbody>';
-
             while ($dados = mysqli_fetch_assoc($resultado)) {
                 echo "<tr>";
-                echo "<td>" . $dados['nome'] . "</td>";
-                echo "<td>" . $dados['nascimento'] . "</td>";
-                echo "<td>" . $dados['raca'] . "</td>";
-                echo "<td>" . $dados['especie'] . "</td>";
-                echo "<td>" . $dados['porte'] . "</td>";
-                echo "<td>" . $dados['peso'] . "</td>";
-                echo "<td>" . $dados['sexo'] . "</td>";
+                echo "<td>" . htmlspecialchars($dados['nome']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['nascimento']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['raca']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['especie']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['porte']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['peso']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['sexo']) . "</td>";
                 echo "<td>" . ($dados['castrado'] ? 'Sim' : 'Não') . "</td>";
-                echo "<td>" . $dados['responsavel'] . "</td>";
+                echo "<td>" . htmlspecialchars($dados['responsavel']) . "</td>";
+
                 echo "</tr>";
             }
-
             echo '</tbody>
             </table>';
             ?>

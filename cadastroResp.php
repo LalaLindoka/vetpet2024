@@ -13,7 +13,7 @@
             --color-danger: #FF0060;
             --color-success: #1B9C85;
             --color-white: #fff;
-            --color-info-dark: #7d8da1;
+            --color-info-dark: #7d8da1;    
             --color-light: rgba(132, 139, 200, 0.18);
             --card-border-radius: 2rem;
             --border-radius-1: 0.4rem;
@@ -38,7 +38,6 @@
             background-color: var(--color-white);
             box-shadow: var(--box-shadow);
             border-radius: 15px;
-            padding: 20px;
             position: fixed;
             left: 0;
         }
@@ -71,7 +70,6 @@
         aside .sidebar {
             display: flex;
             flex-direction: column;
-            margin-top: 20px;
         }
 
         aside .sidebar a {
@@ -161,16 +159,16 @@
 
 <body>
     <aside>
-        <div class="toggle">
-            <div class="logo">
-                <h2>Teste</h2>
-            </div>
-            <div class="close" id="close-btn">
-                <span class="material-icons-sharp">close</span>
-            </div>
-        </div>
-
+        
         <div class="sidebar">
+            <div class="toggle">
+                <div class="logo">
+                    <h2>Cadastros</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
             <a href="cadastros.php">
                 <span class="material-icons-sharp"></span>
                 <h3>Pets</h3>
@@ -200,7 +198,7 @@
                 <img src="logo.png" alt="Logo">
                 <div class="search-container">
                     <form action="pesquisarResp.php" method="get">
-                        <input type="text" placeholder="Pesquisar Responsável..." name="pesquisa">
+                        <input type="text" placeholder="Pesquisar Responsavel..." name="pesquisa">
                         <button type="submit">Buscar</button>
                     </form>
                 </div>

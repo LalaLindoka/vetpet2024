@@ -20,7 +20,11 @@
             margin-bottom: 5px;
         }
 
-        input[type="text"], input[type="date"], input[type="number"], select, textarea {
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
@@ -34,7 +38,10 @@
             cursor: pointer;
         }
 
-        #racaContainer, #especieOutroContainer, #especieContainer, #racaContainer {
+        #racaContainer,
+        #especieOutroContainer,
+        #especieContainer,
+        #racaContainer {
             display: none;
         }
     </style>
@@ -58,21 +65,10 @@
             </select><br>
         </div>
 
-        <div id="especieOutroContainer">
-            <label for="especieOutro">Digite a Espécie:</label>
-            <input type="text" id="especieOutro" name="especie" aria-required="true"><br>
-        </div>
-
         <div id="racaContainer">
             <label for="raca">Raça:</label>
             <select id="raca" name="raca" required>
-                <!-- As raças serão carregadas aqui via AJAX -->
             </select><br>
-        </div>
-
-        <div id="racaOutroContainer">
-            <label for="racaOutro">Digite a Raça:</label>
-            <input type="text" id="racaOutro" name="raca" aria-required="true"><br>
         </div>
 
         <label for="porte">Porte:</label>
@@ -116,43 +112,31 @@
     <script>
         document.getElementById('especie').addEventListener('change', function () {
             var especie = this.value;
-            var especieOutroContainer = document.getElementById('especieOutroContainer');
-            var racaOutroContainer = document.getElementById('racaOutroContainer');
             var racaSelect = document.getElementById('raca');
             var especieContainer = document.getElementById('especieContainer');
             var racaContainer = document.getElementById('racaContainer');
 
-            if (especie === 'outro') {
-                especieContainer.style.display = 'none';
-                especieOutroContainer.style.display = 'block';
-                racaContainer.style.display = 'none';
-                racaOutroContainer.style.display = 'block';
-                racaSelect.required = false; // Não exige a seleção de uma raça
-            } else {
-                especieOutroContainer.style.display = 'none';
-                racaOutroContainer.style.display = 'none';
-                especieContainer.style.display = 'block';
-                racaContainer.style.display = 'block';
-                racaSelect.required = true; // Exige a seleção de uma raça
-                // AJAX para buscar as raças da espécie selecionada
-                fetch('racas.php?especie=' + especie)
-                    .then(response => response.json())
-                    .then(data => {
-                        racaSelect.innerHTML = '';
-                        data.forEach(function (raca) {
-                            var option = document.createElement('option');
-                            option.value = raca.nome;
-                            option.textContent = raca.nome;
-                            racaSelect.appendChild(option);
-                        });
-                    })
-                    .catch(() => {
+            especieContainer.style.display = 'block';
+            racaContainer.style.display = 'block';
+            racaSelect.required = true;
+            fetch('racas.php?especie=' + especie)
+                .then(response => response.json())
+                .then(data => {
+                    racaSelect.innerHTML = '';
+                    data.forEach(function (raca) {
                         var option = document.createElement('option');
-                        option.value = '';
-                        option.textContent = 'Erro ao carregar raças';
+                        option.value = raca.nome;
+                        option.textContent = raca.nome;
                         racaSelect.appendChild(option);
                     });
-            }
+                })
+                .catch(() => {
+                    var option = document.createElement('option');
+                    option.value = '';
+                    option.textContent = 'Erro ao carregar raças';
+                    racaSelect.appendChild(option);
+                });
+
         });
 
         // Inicializa o estado do formulário
