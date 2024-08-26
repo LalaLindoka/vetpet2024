@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda</title>
+    <title>Index</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="cad.css">
 </head>
@@ -25,7 +25,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Adicione suas linhas de agenda aqui -->
                     <tr>
                         <td>09:00</td>
                         <td>Reunião com equipe</td>
@@ -42,8 +41,8 @@
         <div class="side-buttons">
         <a href="cadastrarForm.html" class="button">Cadastrar Paciente</a>
         <a href="cadastros.php" class="button">Cadastros</a>
-        <a href="cadastrarForm.html" class="button">Cadastrar Paciente</a>
-        <a href="cadastrarForm.html" class="button">Cadastrar Paciente</a>
+        <a href="cadastrarForm.html" class="button">nao definido</a>
+        <a href="cadastrarForm.html" class="button">nao definido</a>
         </div>
     </div>
 </body>

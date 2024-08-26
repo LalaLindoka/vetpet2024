@@ -10,24 +10,32 @@
             width: 50%;
             margin: auto;
         }
+
         div {
             margin-bottom: 15px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
         }
-        input[type="text"], input[type="date"], input[type="number"], select {
+
+        input[type="text"], input[type="date"], input[type="number"], select, textarea {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
         }
+
         input[type="submit"] {
             padding: 10px 20px;
             background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
+        }
+
+        #racaContainer, #especieOutroContainer, #especieContainer, #racaContainer {
+            display: none;
         }
     </style>
 </head>
@@ -41,20 +49,40 @@
         <label for="nascimento">Data de Nascimento:</label>
         <input type="date" id="nascimento" name="nascimento" required><br>
 
-        <label for="especie">Espécie:</label>
-        <select id="especie" name="especie" required>
-            <option value="cachorro">Cachorro</option>
-            <option value="gato">Gato</option>
-        </select><br>
+        <div id="especieContainer">
+            <label for="especie">Espécie:</label>
+            <select id="especie" name="especie" required>
+                <option value="cachorro">Cachorro</option>
+                <option value="gato">Gato</option>
+                <option value="outro">Outro</option>
+            </select><br>
+        </div>
 
-        <label for="raca">Raça:</label>
-        <select id="raca" name="raca" required>
-        </select><br>
+        <div id="especieOutroContainer">
+            <label for="especieOutro">Digite a Espécie:</label>
+            <input type="text" id="especieOutro" name="especieOutro" aria-required="true"><br>
+        </div>
+
+        <div id="racaContainer">
+            <label for="raca">Raça:</label>
+            <select id="raca" name="raca" required>
+                <!-- As raças serão carregadas aqui via AJAX -->
+            </select><br>
+        </div>
+
+        <div id="racaOutroContainer">
+            <label for="racaOutro">Digite a Raça:</label>
+            <input type="text" id="racaOutro" name="racaOutro" aria-required="true"><br>
+        </div>
 
         <label for="porte">Porte:</label>
-        <input type="text" id="porte" name="porte" required><br>
+        <select id="porte" name="porte" required>
+            <option value="pequeno">Pequeno</option>
+            <option value="medio">Médio</option>
+            <option value="grande">Grande</option>
+        </select><br>
 
-        <label for="peso">Peso:</label>
+        <label for="peso">Peso (kg):</label>
         <input type="number" id="peso" name="peso" step="0.01" required><br>
 
         <label for="sexo">Sexo:</label>
@@ -68,6 +96,9 @@
             <option value="1">Sim</option>
             <option value="0">Não</option>
         </select><br>
+
+        <label for="observacao">Observações:</label>
+        <textarea id="observacao" name="observacao" rows="4"></textarea><br>
 
         <h3>Dados do Responsável</h3>
         <label for="nome_responsavel">Nome:</label>
@@ -85,19 +116,47 @@
     <script>
         document.getElementById('especie').addEventListener('change', function () {
             var especie = this.value;
-            fetch('racas.php?especie=' + especie)
-                .then(response => response.json())
-                .then(data => {
-                    var racaSelect = document.getElementById('raca');
-                    racaSelect.innerHTML = '';
-                    data.forEach(function (raca) {
+            var especieOutroContainer = document.getElementById('especieOutroContainer');
+            var racaOutroContainer = document.getElementById('racaOutroContainer');
+            var racaSelect = document.getElementById('raca');
+            var especieContainer = document.getElementById('especieContainer');
+            var racaContainer = document.getElementById('racaContainer');
+
+            if (especie === 'outro') {
+                especieContainer.style.display = 'none';
+                especieOutroContainer.style.display = 'block';
+                racaContainer.style.display = 'none';
+                racaOutroContainer.style.display = 'block';
+                racaSelect.required = false; // Não exige a seleção de uma raça
+            } else {
+                especieOutroContainer.style.display = 'none';
+                racaOutroContainer.style.display = 'none';
+                especieContainer.style.display = 'block';
+                racaContainer.style.display = 'block';
+                racaSelect.required = true; // Exige a seleção de uma raça
+                // AJAX para buscar as raças da espécie selecionada
+                fetch('racas.php?especie=' + especie)
+                    .then(response => response.json())
+                    .then(data => {
+                        racaSelect.innerHTML = '';
+                        data.forEach(function (raca) {
+                            var option = document.createElement('option');
+                            option.value = raca.nome;
+                            option.textContent = raca.nome;
+                            racaSelect.appendChild(option);
+                        });
+                    })
+                    .catch(() => {
                         var option = document.createElement('option');
-                        option.value = raca.nome;
-                        option.textContent = raca.nome;
+                        option.value = '';
+                        option.textContent = 'Erro ao carregar raças';
                         racaSelect.appendChild(option);
                     });
-                });
+            }
         });
+
+        // Inicializa o estado do formulário
+        document.getElementById('especie').dispatchEvent(new Event('change'));
     </script>
 </body>
 
