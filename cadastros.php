@@ -38,7 +38,6 @@
             background-color: var(--color-white);
             box-shadow: var(--box-shadow);
             border-radius: 15px;
-            padding: 20px;
             position: fixed;
             left: 0;
         }
@@ -71,7 +70,6 @@
         aside .sidebar {
             display: flex;
             flex-direction: column;
-            margin-top: 20px;
         }
 
         aside .sidebar a {
@@ -161,16 +159,16 @@
 
 <body>
     <aside>
-        <div class="toggle">
-            <div class="logo">
-                <h2>Cadastros</h2>
-            </div>
-            <div class="close" id="close-btn">
-                <span class="material-icons-sharp">close</span>
-            </div>
-        </div>
-
+        
         <div class="sidebar">
+            <div class="toggle">
+                <div class="logo">
+                    <h2>Cadastros</h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
             <a href="cadastros.php" class="active">
                 <span class="material-icons-sharp"></span>
                 <h3>Pets</h3>

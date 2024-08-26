@@ -13,7 +13,7 @@
             --color-danger: #FF0060;
             --color-success: #1B9C85;
             --color-white: #fff;
-            --color-info-dark: #7d8da1;    
+            --color-info-dark: #7d8da1;
             --color-light: rgba(132, 139, 200, 0.18);
             --card-border-radius: 2rem;
             --border-radius-1: 0.4rem;
@@ -171,7 +171,7 @@
         </div>
 
         <div class="sidebar">
-            <a href="cadastros.php" >
+            <a href="cadastros.php">
                 <span class="material-icons-sharp"></span>
                 <h3>Pets</h3>
             </a>
@@ -208,7 +208,7 @@
         </header>
 
         <div style="padding: 10px">
-        <?php
+            <?php
             include("conecta.php");
 
             // Verifica se a conexão foi bem-sucedida
@@ -216,8 +216,9 @@
                 die("Conexão falhou: " . mysqli_connect_error());
             }
 
-            $sql = "SELECT nome, telefone, endereco
-                    FROM responsaveis";
+            $sql = "SELECT p.nome AS paciente_nome, r.nome AS responsavel_nome, r.telefone, r.endereco
+        FROM pacientes p
+        JOIN responsaveis r ON p.responsavel_id = r.id";
             $resultado = mysqli_query($conexao, $sql);
 
             if (!$resultado) {
@@ -225,26 +226,27 @@
             }
 
             echo '<table>
-            <thead>
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Telefone</th>
-                    <th scope="col">Endereço</th>
-                    <th scope="col">Animal</th>
-                </tr>
-            </thead>
-            <tbody>';
+<thead>
+    <tr>
+        <th scope="col">Nome do Paciente</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Endereço</th>
+        <th scope="col">Nome do Responsável</th>
+    </tr>
+</thead>
+<tbody>';
 
             while ($dados = mysqli_fetch_assoc($resultado)) {
                 echo "<tr>";
-                echo "<td>" . $dados['nome'] . "</td>";
-                echo "<td>" . $dados['telefone'] . "</td>";
-                echo "<td>" . $dados['endereco'] . "</td>";
+                echo "<td>" . htmlspecialchars($dados['responsavel_nome']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['telefone']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['endereco']) . "</td>";
+                echo "<td>" . htmlspecialchars($dados['paciente_nome']) . "</td>";
                 echo "</tr>";
             }
 
             echo '</tbody>
-            </table>';
+</table>';
             ?>
         </div>
     </div>

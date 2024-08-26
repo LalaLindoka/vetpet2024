@@ -45,10 +45,10 @@ body {
     transition: background 0.3s;
 }
 
-.sidebar a:hover {
+/* .sidebar a:hover {
     background-color: #ff9bb1;
     color: #fff;
-}
+} */
 
 .sidebar a.active {
     background-color: #ff9bb1;
