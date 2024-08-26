@@ -25,7 +25,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Adicione suas linhas de agenda aqui -->
                     <tr>
                         <td>09:00</td>
                         <td>Reunião com equipe</td>

@@ -171,11 +171,11 @@
         </div>
 
         <div class="sidebar">
-            <a href="cadastros.php" class="active">
+            <a href="cadastros.php" >
                 <span class="material-icons-sharp"></span>
                 <h3>Pets</h3>
             </a>
-            <a href="cadastroResp.php">
+            <a href="cadastroResp.php" class="active">
                 <span class="material-icons-sharp"></span>
                 <h3>Responsáveis</h3>
             </a>
@@ -199,8 +199,8 @@
             <div class="navbar">
                 <img src="logo.png" alt="Logo">
                 <div class="search-container">
-                    <form action="pesquisarPaciente.php" method="get">
-                        <input type="text" placeholder="Pesquisar Paciente..." name="pesquisa">
+                    <form action="pesquisarResp.php" method="get">
+                        <input type="text" placeholder="Pesquisar Responsável..." name="pesquisa">
                         <button type="submit">Buscar</button>
                     </form>
                 </div>
@@ -208,26 +208,29 @@
         </header>
 
         <div style="padding: 10px">
-            <?php
+        <?php
             include("conecta.php");
 
-            $sql = "SELECT p.nome, p.nascimento, p.raca, p.especie, p.porte, p.peso, p.sexo, p.castrado, r.nome AS responsavel
-                    FROM pacientes p
-                    JOIN responsaveis r ON p.responsavel_id = r.id";
+            // Verifica se a conexão foi bem-sucedida
+            if (!$conexao) {
+                die("Conexão falhou: " . mysqli_connect_error());
+            }
+
+            $sql = "SELECT nome, telefone, endereco
+                    FROM responsaveis";
             $resultado = mysqli_query($conexao, $sql);
+
+            if (!$resultado) {
+                die("Erro na consulta: " . mysqli_error($conexao));
+            }
 
             echo '<table>
             <thead>
                 <tr>
                     <th scope="col">Nome</th>
-                    <th scope="col">Nascimento</th>
-                    <th scope="col">Raça</th>
-                    <th scope="col">Espécie</th>
-                    <th scope="col">Porte</th>
-                    <th scope="col">Peso (kg)</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Castrado</th>
-                    <th scope="col">Responsável</th>
+                    <th scope="col">Telefone</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">Animal</th>
                 </tr>
             </thead>
             <tbody>';
@@ -235,14 +238,8 @@
             while ($dados = mysqli_fetch_assoc($resultado)) {
                 echo "<tr>";
                 echo "<td>" . $dados['nome'] . "</td>";
-                echo "<td>" . $dados['nascimento'] . "</td>";
-                echo "<td>" . $dados['raca'] . "</td>";
-                echo "<td>" . $dados['especie'] . "</td>";
-                echo "<td>" . $dados['porte'] . "</td>";
-                echo "<td>" . $dados['peso'] . "</td>";
-                echo "<td>" . $dados['sexo'] . "</td>";
-                echo "<td>" . ($dados['castrado'] ? 'Sim' : 'Não') . "</td>";
-                echo "<td>" . $dados['responsavel'] . "</td>";
+                echo "<td>" . $dados['telefone'] . "</td>";
+                echo "<td>" . $dados['endereco'] . "</td>";
                 echo "</tr>";
             }
 

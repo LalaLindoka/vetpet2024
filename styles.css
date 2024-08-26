@@ -54,7 +54,7 @@ header .welcome {
 .agenda table th, .agenda table td {
     padding: 10px;
     text-align: left;
-    color:#ffffff
+    color: #ffffff;
 }
 
 .agenda table th {
@@ -98,4 +98,92 @@ header .welcome {
 
 .side-buttons .button:hover {
     background-color: #ff7a96;
+}
+
+/* Estilo do modal (pop-up) */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background-color: #ffe4e1;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: block;
+}
+
+.modal-header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff4081;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.close-btn {
+    cursor: pointer;
+    font-size: 20px;
+    color: #ff4081;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: #ff80ab;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal form div {
+    margin-bottom: 10px;
+}
+
+.modal label {
+    font-size: 16px;
+    color: #ff4081;
+    margin-bottom: 5px;
+}
+
+.modal input[type="text"],
+.modal input[type="datetime-local"],
+.modal select {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #ffb6c1;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #ff4081;
+    font-size: 16px;
+}
+
+.modal-footer {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.modal-footer button {
+    background-color: #ff80ab;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-footer button:hover {
+    background-color: #ff4081;
 }
