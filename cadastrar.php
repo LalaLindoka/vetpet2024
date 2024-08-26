@@ -18,9 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $peso = $_POST['peso'];
         $sexo = $_POST['sexo'];
         $castrado = $_POST['castrado'];
+        $observacao = $_POST['observacao'];
        
-        $sqlPaciente = "INSERT INTO pacientes (nome, nascimento, raca, especie, porte, peso, sexo, castrado, responsavel_id) 
-                        VALUES ('$nome', '$nascimento', '$raca', '$especie', '$porte', '$peso', '$sexo', '$castrado', '$responsavel_id')";
+        $sqlPaciente = "INSERT INTO pacientes (nome, nascimento, raca, especie, porte, peso, sexo, castrado, observacao, responsavel_id) 
+                        VALUES ('$nome', '$nascimento', '$raca', '$especie', '$porte', '$peso', '$sexo', '$castrado', '$observacao', '$responsavel_id')";
         if (mysqli_query($conexao, $sqlPaciente)) {
             echo "Paciente cadastrado com sucesso!";
             echo '<br><br><a href="index.php"><button>Voltar</button></a>';
