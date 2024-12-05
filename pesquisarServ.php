@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -153,11 +154,12 @@
         th {
             background-color: #f2f2f2;
         }
-        </style>
+    </style>
 </head>
 
 <body>
     <aside>
+
         <div class="sidebar">
             <div class="toggle">
                 <div class="logo">
@@ -167,7 +169,7 @@
                     <span class="material-icons-sharp">close</span>
                 </div>
             </div>
-            <a href="cadastros.php" class="active">
+            <a href="cadastros.php" >
                 <span class="material-icons-sharp"></span>
                 <h3>Pets</h3>
             </a>
@@ -175,7 +177,7 @@
                 <span class="material-icons-sharp"></span>
                 <h3>Responsáveis</h3>
             </a>
-            <a href="cadastroServ.php">
+            <a href="cadastroServ.php" class="active">
                 <span class="material-icons-sharp"></span>
                 <h3>Serviços</h3>
             </a>
@@ -187,7 +189,7 @@
                 <span class="material-icons-sharp"></span>
                 <h3>Menu</h3>
             </a>
-            </div>
+        </div>
     </aside>
 
     <div class="content">
@@ -195,76 +197,49 @@
             <div class="navbar">
                 <img src="logo.png" alt="Logo">
                 <div class="search-container">
-                    <form action="pesquisarPaciente.php" method="get">
-                        <input type="text" placeholder="Pesquisar Paciente..." name="pesquisa">
+                    <form action="pesquisarServ.php" method="get">
+                        <input type="text" placeholder="Pesquisar Serviço..." name="pesquisa">
                         <button type="submit">Buscar</button>
                     </form>
                 </div>
             </div>
         </header>
+<?php
+include("conecta.php");
 
-        <div style="padding: 10px">
-            <?php
-            include("conecta.php");
-            $sql = "SELECT p.nome, 
-            DATE_FORMAT(p.nascimento, '%d/%m/%Y') AS nascimento, 
-            p.raca, 
-            p.especie, 
-            p.porte, 
-            p.peso, 
-            p.sexo, 
-            p.castrado, 
-            r.nome AS responsavel
-     FROM pacientes p
-     JOIN responsaveis r ON p.responsavel_id = r.id";
+if (isset($_GET['pesquisa'])) {
+    $pesquisa = $_GET['pesquisa']; 
+    $sql = "SELECT * FROM servicos WHERE nome LIKE '%$pesquisa%'";
+    $resultado = mysqli_query($conexao, $sql);
 
-            $resultado = mysqli_query($conexao, $sql);
-
-            echo '<table>
-            <thead>
+    if (mysqli_num_rows($resultado) > 0) {
+        echo "<table>
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Nascimento</th>
-                    <th scope="col">Raça</th>
-                    <th scope="col">Espécie</th>
-                    <th scope="col">Porte</th>
-                    <th scope="col">Peso (kg)</th>
-                    <th scope="col">Sexo</th>
-                    <th scope="col">Castrado</th>
-                    <th scope="col">Responsável</th>
-                    <th scope="col">Abrir ficha</th>
-                    <th scope="col">Editar ficha</th>
-                </tr>
-            </thead>
-            <tbody>';
-            while ($dados = mysqli_fetch_assoc($resultado)) {
-                echo "<tr>";
-                echo "<td>" . htmlspecialchars($dados['nome']) . "</td>";
-                echo "<td>" . htmlspecialchars($dados['nascimento']) . "</td>";
-                echo "<td>" . htmlspecialchars($dados['raca']) . "</td>";
-                echo "<td>" . htmlspecialchars($dados['especie']) . "</td>";
-                echo "<td>" . htmlspecialchars($dados['porte']) . "</td>";
-                echo "<td>" . htmlspecialchars($dados['peso']) . "</td>";
-                echo "<td>" . htmlspecialchars($dados['sexo']) . "</td>";
-                echo "<td>" . ($dados['castrado'] ? 'Sim' : 'Não') . "</td>";
-                echo "<td>" . htmlspecialchars($dados['responsavel']) . "</td>";
-                echo "<td><a href='ficha.php?nome=".urlencode($dados['nome'])."'>Abrir</a></td>";
-                echo "<td><a href='editar_ficha.php?nome=".urlencode($dados['nome'])."'>Editar</a></td>";
-                echo "</tr>";
-            }
-            echo '</tbody>
-            </table>';
-            ?>
-        </div>
-    </div>
-   
-    <!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.modal');
-      var instances = M.Modal.init(elems);
-  });
-</script>
+                    <th>Serviço</th>
+                    <th>Preço</th>
+                </tr>";
+
+        while ($row = mysqli_fetch_assoc($resultado)) {
+            echo "<tr>";
+            echo "<td>" . $row['nome'] . "</td>";
+            echo "<td>" . $row['preco'] . "</td>";
+            echo "</tr>";
+        }
+        echo '</tbody>
+        </table>';
+        } else {
+        
+        echo '<div class="modal">
+            <div class="modal-content">
+                <h2>Nenhum serviço encontrado</h2>
+                <p>Não foi encontrado nenhum serviço com o nome "'.$pesquisa.'".</p>
+                <button class="close-modal">Fechar</button>
+            </div>
+        </div>';
+        }
+        }
+        ?>
+
 </body>
+
 </html>

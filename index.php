@@ -1,48 +1,33 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="cad.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/stylelogin.css">
+    <title>Login</title>
 </head>
 <body>
-    <header>
-        <img src="logo.png" alt="Logo">
-        <input type="text" placeholder="Pesquisar...">
-        <div class="welcome">Seja bem-vindo, xxx</div>
-    </header>
-
+<div class="title-container">
+    <h1 class="title">VetPet</h1>
+</div>
+    <div class="logo">
+        <img src="logob.png" alt="Logo VetPet">
+    </div>
     <div class="container">
-        <div class="agenda">
-            <h2>Agenda</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Horário</th>
-                        <th>Compromisso</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>09:00</td>
-                        <td>Reunião com equipe</td>
-                    </tr>
-                    <tr>
-                        <td>11:00</td>
-                        <td>Consulta médica</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="add-button">+</div>
-        </div>
-
-        <div class="side-buttons">
-        <a href="cadastrarForm.html" class="button">Cadastrar Paciente</a>
-        <a href="cadastros.php" class="button">Cadastros</a>
-        <a href="cadastrarForm.html" class="button">nao definido</a>
-        <a href="cadastrarForm.html" class="button">nao definido</a>
+        <h1>Login</h1>
+        <form action="login.php" method="post">
+            <label for="email">Email: 
+                <input type="text" name="email">
+            </label><br>
+            <label for="senha">Senha: 
+                <input type="password" name="senha">
+            </label><br>
+            <input type="submit" value="Enviar">
+        </form>
+        <div class="links">
+            <a href="form-recuperar-senha.php">Recuperar Senha</a>
+            <a href="form-cadastrar.php" class="register-link">Não possui conta?</a>
         </div>
     </div>
 </body>

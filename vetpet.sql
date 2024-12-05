@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Tempo de geração: 03-Ago-2024 às 03:02
+-- Tempo de geração: 02-Set-2024 às 18:42
 -- Versão do servidor: 8.0.31
 -- versão do PHP: 8.0.26
 
@@ -38,20 +38,19 @@ CREATE TABLE IF NOT EXISTS `pacientes` (
   `peso` decimal(5,2) DEFAULT NULL,
   `sexo` enum('Macho','Fêmea') DEFAULT NULL,
   `castrado` tinyint(1) DEFAULT NULL,
+  `observacao` text NOT NULL,
   `responsavel_id` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_responsavel` (`responsavel_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `pacientes`
 --
 
-INSERT INTO `pacientes` (`id`, `nome`, `nascimento`, `raca`, `especie`, `porte`, `peso`, `sexo`, `castrado`, `responsavel_id`) VALUES
-(1, 'Rex', '2020-01-01', 'Labrador', 'Cão', 'Grande', '30.50', 'Macho', 1, 1),
-(2, 'Mimi', '2018-05-10', 'Siames', 'Gato', 'Pequeno', '4.30', 'Fêmea', 0, 2),
-(3, 'Bob', '2019-08-23', 'Bulldog', 'Cão', 'Médio', '20.00', 'Macho', 1, 1),
-(7, 'fade', '2023-11-02', 'Dooberman', 'Gato', 'Médio', '200.00', 'Macho', 0, 6);
+INSERT INTO `pacientes` (`id`, `nome`, `nascimento`, `raca`, `especie`, `porte`, `peso`, `sexo`, `castrado`, `observacao`, `responsavel_id`) VALUES
+(3, 'Bob', '2019-08-23', 'Bulldog', 'Cão', 'Médio', '20.00', 'Macho', 1, '', 1),
+(22, 'Juju', '2022-06-14', 'Maine Coon', 'gato', 'Grande', '5.00', 'Macho', 1, '', 23);
 
 -- --------------------------------------------------------
 
@@ -63,9 +62,9 @@ DROP TABLE IF EXISTS `racas`;
 CREATE TABLE IF NOT EXISTS `racas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(255) NOT NULL,
-  `especie` enum('cachorro','gato') NOT NULL,
+  `especie` enum('cachorro','gato','outro','roedor','ave','reptil') CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `racas`
@@ -91,7 +90,65 @@ INSERT INTO `racas` (`id`, `nome`, `especie`) VALUES
 (17, 'British Shorthair', 'gato'),
 (18, 'Abyssinian', 'gato'),
 (19, 'Birman', 'gato'),
-(20, 'Scottish Fold', 'gato');
+(20, 'Scottish Fold', 'gato'),
+(21, 'Sem raça definida', 'cachorro'),
+(22, 'Sem raça definida', 'gato'),
+(25, 'Coelho', 'roedor'),
+(24, 'Pato', 'outro'),
+(26, 'Porquinho-da-índia', 'roedor'),
+(27, 'Hamster', 'roedor'),
+(28, 'Pássaro Canário', 'ave'),
+(29, 'Papagaio', 'ave'),
+(30, 'Tartaruga', 'reptil'),
+(31, 'Iguana', 'reptil'),
+(32, 'Coati', 'outro'),
+(33, 'Furão', 'outro'),
+(34, 'Rato', 'roedor'),
+(35, 'Paca', 'outro'),
+(36, 'Ouriço', 'outro'),
+(37, 'Pangolim', 'outro'),
+(38, 'Cobrança', 'reptil'),
+(39, 'Camaleão', 'reptil'),
+(40, 'Falcão', 'ave'),
+(41, 'Serpente', 'reptil'),
+(42, 'Coelho', 'roedor'),
+(43, 'Porquinho-da-índia', 'roedor'),
+(44, 'Hamster', 'roedor'),
+(45, 'Pássaro Canário', 'ave'),
+(46, 'Papagaio', 'ave'),
+(47, 'Tartaruga', 'reptil'),
+(48, 'Iguana', 'reptil'),
+(49, 'Coati', 'outro'),
+(50, 'Furão', 'outro'),
+(51, 'Rato', 'roedor'),
+(52, 'Paca', 'outro'),
+(53, 'Ouriço', 'outro'),
+(54, 'Pangolim', 'outro'),
+(55, 'Cobrança', 'reptil'),
+(56, 'Camaleão', 'reptil'),
+(57, 'Tetra', ''),
+(58, 'Betta', ''),
+(59, 'Cachorro-do-mato', 'outro'),
+(60, 'Falcão', 'ave'),
+(61, 'Serpente', 'reptil'),
+(62, 'Coelho', 'roedor'),
+(63, 'Porquinho-da-índia', 'roedor'),
+(64, 'Hamster', 'roedor'),
+(65, 'Pássaro Canário', 'ave'),
+(66, 'Papagaio', 'ave'),
+(67, 'Tartaruga', 'reptil'),
+(68, 'Iguana', 'reptil'),
+(69, 'Coati', 'outro'),
+(70, 'Furão', 'outro'),
+(71, 'Rato', 'roedor'),
+(72, 'Paca', 'outro'),
+(73, 'Ouriço', 'outro'),
+(74, 'Pangolim', 'outro'),
+(75, 'Cobrança', 'reptil'),
+(76, 'Camaleão', 'reptil'),
+(77, 'Cachorro-do-mato', 'outro'),
+(78, 'Falcão', 'ave'),
+(79, 'Serpente', 'reptil');
 
 -- --------------------------------------------------------
 
@@ -106,18 +163,43 @@ CREATE TABLE IF NOT EXISTS `responsaveis` (
   `telefone` varchar(15) DEFAULT NULL,
   `endereco` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Extraindo dados da tabela `responsaveis`
 --
 
 INSERT INTO `responsaveis` (`id`, `nome`, `telefone`, `endereco`) VALUES
-(1, 'João Silva', '123456789', 'Rua A, 123'),
-(2, 'Maria Oliveira', '987654321', 'Avenida B, 456'),
-(3, 'Gabriel Araujo', '55997068936', 'Rua C, 634'),
-(4, 'Gabriel Araujo', '55997068936', 'Rua C, 634'),
-(6, 'Julia', '55997068936', 'Rua C, 634');
+(27, 'Julia', '55997068936', 'Rua C, 634'),
+(26, 'Julia', '55997068936', 'Rua C, 634'),
+(25, 'Julia', '55997068936', 'Rua C, 634'),
+(24, 'MERCEDES AUDERO', '55991587107', 'Rua A, 534'),
+(23, 'eunice', '55997068936', 'Rua C, 634'),
+(28, 'Mavi', '1234456778', 'rua c, n1234'),
+(29, 'bruno bitencourt', '55 996507010', 'Cidade nova, augusto de almeida, 208'),
+(30, 'Gavi Herreiro', '1234567893', 'Rua D,756');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `servicos`
+--
+
+DROP TABLE IF EXISTS `servicos`;
+CREATE TABLE IF NOT EXISTS `servicos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `preco` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+
+--
+-- Extraindo dados da tabela `servicos`
+--
+
+INSERT INTO `servicos` (`id`, `nome`, `preco`) VALUES
+(1, 'Remoção de tartáro', 100),
+(2, 'Aplicação de vacina', 80);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

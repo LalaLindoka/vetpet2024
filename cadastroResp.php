@@ -177,15 +177,15 @@
                 <span class="material-icons-sharp"></span>
                 <h3>Responsáveis</h3>
             </a>
-            <a href="servic.php">
+            <a href="cadastroServ.php">
                 <span class="material-icons-sharp"></span>
                 <h3>Serviços</h3>
             </a>
-            <a href="medi.php" target="_blank">
+            <a href="cadastroMedi.php">
                 <span class="material-icons-sharp"></span>
                 <h3>Medicamentos</h3>
             </a>
-            <a href="index.php">
+            <a href="inicio.php">
                 <span class="material-icons-sharp"></span>
                 <h3>Menu</h3>
             </a>
@@ -226,10 +226,10 @@
             echo '<table>
 <thead>
     <tr>
-        <th scope="col">Nome do Paciente</th>
+        <th scope="col">Nome do Responsável</th>
         <th scope="col">Telefone</th>
         <th scope="col">Endereço</th>
-        <th scope="col">Nome do Responsável</th>
+        <th scope="col">Nome do Paciente</th>
     </tr>
 </thead>
 <tbody>';

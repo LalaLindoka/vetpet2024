@@ -40,7 +40,7 @@ header .welcome {
 }
 
 .agenda h2 {
-    color: #ff9bb1;
+    color: #000000;
     border-bottom: 2px solid #ff9bb1;
     padding-bottom: 5px;
 }
@@ -65,7 +65,7 @@ header .welcome {
 
 .agenda table td {
     background-color: #ffe6ea;
-    color: #ff9bb1;
+    color: #000000;
 }
 
 .agenda .add-button {
