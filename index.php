@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <title>VetPet</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon">
     <link rel="stylesheet" href="css/stylelogin.css">
-    <title>Login</title>
 </head>
+
 <body>
-<div class="title-container">
-    <h1 class="title">VetPet</h1>
-</div>
-    <div class="logo">
-        <img src="logob.png" alt="Logo VetPet">
-    </div>
+    <img class="logo" src="logob.png" alt="logo" width="96px" height="auto">
+    <header>
+        <h1>VetPet</h1>
+    </header>
     <div class="container">
-        <h1>Login</h1>
-        <form action="login.php" method="post">
-            <label for="email">Email: 
-                <input type="text" name="email">
-            </label><br>
-            <label for="senha">Senha: 
-                <input type="password" name="senha">
-            </label><br>
-            <input type="submit" value="Enviar">
-        </form>
-        <div class="links">
-            <a href="form-recuperar-senha.php">Recuperar Senha</a>
-            <a href="form-cadastrar.php" class="register-link">Não possui conta?</a>
-        </div>
+        <main>
+            <div class="form-box">
+                <h2>Acessar Conta:</h2>
+                <form action="#">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Digite seu email" required>
+
+                    <label for="senha">Senha:</label>
+                    <input type="password" id="senha" placeholder="Digite sua senha" required>
+
+                    <div class="actions">
+                        <button type="submit">Entrar</button>
+                        <a href="#" class="link">Recuperar senha</a>
+                    </div>
+                </form>
+            </div>
+            <a href="form-cadastro.html" class="no-account">Não possui conta?</a>
+        </main>
+        <footer>
+            <p>Sistema de gerenciamento de clínica veterinária</p>
+        </footer>
     </div>
 </body>
+
 </html>

@@ -11,7 +11,7 @@
     <header>
         <img src="logo.png" alt="Logo">
         <input type="text" placeholder="Pesquisar...">
-        <div class="welcome">Seja bem-vindo, xxx</div>
+        <div class="welcome">Seja bem-vindo!</div>
     </header>
 
     <div class="container">

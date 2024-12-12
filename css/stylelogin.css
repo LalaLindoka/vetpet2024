@@ -1,0 +1,134 @@
+/* Geral */
+body {
+    font-family: 'Playfair Display', serif;
+    background-color: #fdfbf9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-image: url(curva.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.logo {
+    position: absolute;
+    right: 7%;
+    top: 10%;
+    transform: translateY(-50%);
+}
+
+/* Título fixo */
+header {
+    position: fixed;
+    top: 60px;
+    /* Distância maior do topo */
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    color: #504e4e;
+    background-color: #ffe4ef;
+    border: 2px solid #ff86ab;
+    border-radius: 20px;
+    padding: 5px 60px;
+    display: inline-block;
+    margin: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Container principal */
+.container {
+    text-align: center;
+    width: 100%;
+    margin-top: 200px;
+    /* Aumenta a distância entre o título e a caixa de formulário */
+}
+
+/* Caixa de formulário */
+.form-box {
+    background-color: #fdfbf9;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto 0;
+    /* Margem extra para afastar de outros elementos */
+    border: #ff86ab 1px solid;
+}
+
+.form-box h2 {
+    font-size: 1.5rem;
+    color: #504e4e;
+    margin: -20px 0 20px;
+}
+
+.form-box label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-box input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ff86ab;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Botões e links */
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button {
+    background-color: #ff86ab;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #ff7299;
+}
+
+a.link {
+    font-size: 0.9rem;
+    color: #ff86ab;
+    text-decoration: none;
+    text-decoration: underline;
+}
+
+.no-account {
+    font-size: 0.9rem;
+    color: #504e4e;
+    text-decoration: underline;
+}
+
+/* Rodapé fixo */
+footer {
+    position: fixed;
+    bottom: -20px;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #740023;
+}
