@@ -19,12 +19,12 @@
         <main>
             <div class="form-box">
                 <h2>Acessar Conta:</h2>
-                <form action="#">
+                <form action="login.php" method="POST">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" placeholder="Digite seu email" required>
+                    <input type="email" name="email" id="email" placeholder="Digite seu email" required>
 
                     <label for="senha">Senha:</label>
-                    <input type="password" id="senha" placeholder="Digite sua senha" required>
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
 
                     <div class="actions">
                         <button type="submit">Entrar</button>

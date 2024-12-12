@@ -5,6 +5,9 @@ $email = $_POST['email'];
 $senha = $_POST['senha'];
 
 include("conecta.php");
+$conexao = conectar();
+
+
 
 $sql = "SELECT * FROM usuario WHERE email='$email'";
 $resultado = executarSQL($conexao, $sql);
