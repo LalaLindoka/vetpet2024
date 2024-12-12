@@ -4,8 +4,7 @@ session_start();
 $email = $_POST['email'];
 $senha = $_POST['senha'];
 
-require_once "conecta.php";
-$conexao = conectar();
+include("conecta.php");
 
 $sql = "SELECT * FROM usuario WHERE email='$email'";
 $resultado = executarSQL($conexao, $sql);
@@ -17,7 +16,7 @@ if($usuario == null){
 }
 if($senha == $usuario['senha']){
     $_SESSION['email'] = $usuario['email'];
-    header("Location: principal.php");
+    header("Location: inicio.php");
 }else{
     echo "Senha inválida! Tente novamente.";
 }

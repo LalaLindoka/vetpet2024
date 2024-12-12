@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="cad.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/cad.css">
 </head>
 <body>
     <header>
